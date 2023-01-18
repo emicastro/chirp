@@ -8,9 +8,9 @@ defmodule ChirpWeb.PostLive.FormComponent do
     changeset = Timeline.change_post(post)
 
     {:ok,
-     socket
-     |> assign(assigns)
-     |> assign(:changeset, changeset)}
+      socket
+      |> assign(assigns)
+      |> assign(:changeset, changeset)}
   end
 
   @impl true
@@ -31,9 +31,9 @@ defmodule ChirpWeb.PostLive.FormComponent do
     case Timeline.update_post(socket.assigns.post, post_params) do
       {:ok, _post} ->
         {:noreply,
-         socket
-         |> put_flash(:info, "Post updated successfully")
-         |> push_redirect(to: socket.assigns.return_to)}
+          socket
+          |> put_flash(:info, "Post updated successfully")
+          |> push_redirect(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}
@@ -44,9 +44,9 @@ defmodule ChirpWeb.PostLive.FormComponent do
     case Timeline.create_post(post_params) do
       {:ok, _post} ->
         {:noreply,
-         socket
-         |> put_flash(:info, "Post created successfully")
-         |> push_redirect(to: socket.assigns.return_to)}
+          socket
+          |> put_flash(:info, "Post created successfully")
+          |> push_redirect(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
